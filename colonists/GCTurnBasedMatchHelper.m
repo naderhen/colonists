@@ -13,6 +13,7 @@
 
 @synthesize gameCenterAvailable;
 @synthesize currentMatch;
+@synthesize delegate;
 
 #pragma mark Initialization
 
@@ -98,8 +99,13 @@ static GCTurnBasedMatchHelper *sharedHelper = nil;
 
 -(void)turnBasedMatchmakerViewController:(GKTurnBasedMatchmakerViewController *)viewController didFindMatch:(GKTurnBasedMatch *)match {
     [presentingViewController dismissViewControllerAnimated:YES completion:nil];
-    NSLog(@"did find match, %@", match);
     self.currentMatch = match;
+    GKTurnBasedParticipant *firstParticipant = [match.participants objectAtIndex:0];
+    if (firstParticipant.lastTurnDate) {
+        NSLog(@"********************************* Existing Match!!!!!");
+    } else {
+        NSLog(@"--------------------------------- New Match!!!!!");
+    }
 }
 
 -(void)turnBasedMatchmakerViewControllerWasCancelled:(GKTurnBasedMatchmakerViewController *)viewController {

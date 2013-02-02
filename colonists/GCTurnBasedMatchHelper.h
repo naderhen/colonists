@@ -9,12 +9,26 @@
 #import <Foundation/Foundation.h>
 #import <GameKit/GameKit.h>
 
+@protocol GCTurnBasedMatchHelperDelegate
+
+- (void)enterNewGame:(GKTurnBasedMatch *)match;
+- (void)layoutMatch:(GKTurnBasedMatch *)match;
+- (void)takeTurn:(GKTurnBasedMatch *)match;
+- (void)receiveEndGame:(GKTurnBasedMatch *)match;
+- (void)sendNotice:(NSString *)notice forMatch:(GKTurnBasedMatch *)match;
+
+@end
+
 @interface GCTurnBasedMatchHelper : NSObject <GKTurnBasedMatchmakerViewControllerDelegate>{
     BOOL gameCenterAvailable;
     BOOL userAuthenticated;
     UIViewController *presentingViewController;
+    
+    id <GCTurnBasedMatchHelperDelegate> delegate;
 }
 
+
+@property (nonatomic, retain) id <GCTurnBasedMatchHelperDelegate> delegate;
 @property (assign, readonly) BOOL gameCenterAvailable;
 @property (retain) GKTurnBasedMatch *currentMatch;
 
