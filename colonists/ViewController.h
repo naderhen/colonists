@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "GCTurnBasedMatchHelper.h"
 
-@interface ViewController : UIViewController <UITextFieldDelegate, GKTurnBasedEventHandlerDelegate> {
+@interface ViewController : UIViewController <UITextFieldDelegate, GCTurnBasedMatchHelperDelegate> {
     IBOutlet UITextView *mainTextController;
     IBOutlet UITextField *textInputField;
+    IBOutlet UIView *inputView;
     
 }
 

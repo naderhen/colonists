@@ -102,9 +102,9 @@ static GCTurnBasedMatchHelper *sharedHelper = nil;
     self.currentMatch = match;
     GKTurnBasedParticipant *firstParticipant = [match.participants objectAtIndex:0];
     if (firstParticipant.lastTurnDate) {
-        NSLog(@"********************************* Existing Match!!!!!");
+        [delegate takeTurn:match];
     } else {
-        NSLog(@"--------------------------------- New Match!!!!!");
+        [delegate enterNewGame:match];
     }
 }
 

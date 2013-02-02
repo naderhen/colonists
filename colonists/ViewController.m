@@ -14,16 +14,26 @@
 
 @implementation ViewController
 
+
+#pragma mark - View lifecycle
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    textInputField.delegate = self;
+    [GCTurnBasedMatchHelper sharedInstance].delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
+    [theTextField resignFirstResponder];
+    return YES;
 }
 
 - (IBAction)presentGCTurnViewController:(id)sender {
@@ -54,6 +64,21 @@
     }];
     NSLog(@"Send Turn, %@, %@", data, nextParticipant);
     textInputField.text = @"";
+}
+
+#pragma mark - GCTurnBasedMatchHelperDelegate
+
+-(void)enterNewGame:(GKTurnBasedMatch *)match {
+    NSLog(@"Entering New Game...");
+    mainTextController.text = @"Once upon a time...";
+}
+
+-(void)takeTurn:(GKTurnBasedMatch *)match {
+    NSLog(@"Taking turn for existing game...");
+    if ([match.matchData bytes]) {
+        NSString *storySoFar = [NSString stringWithUTF8String:[match.matchData bytes]];
+        mainTextController.text = storySoFar;
+    }
 }
 
 @end
