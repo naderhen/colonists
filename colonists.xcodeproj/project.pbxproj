@@ -23,6 +23,8 @@
 		753A582116BDAC6C00ABE2AB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 753A57FC16BDAC6C00ABE2AB /* Foundation.framework */; };
 		753A582916BDAC6C00ABE2AB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 753A582716BDAC6C00ABE2AB /* InfoPlist.strings */; };
 		753A582C16BDAC6C00ABE2AB /* colonistsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 753A582B16BDAC6C00ABE2AB /* colonistsTests.m */; };
+		753A583716BDACB800ABE2AB /* GCTurnBasedMatchHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 753A583616BDACB800ABE2AB /* GCTurnBasedMatchHelper.m */; };
+		753A583916BDADB600ABE2AB /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 753A583816BDADB600ABE2AB /* GameKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,9 @@
 		753A582816BDAC6C00ABE2AB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		753A582A16BDAC6C00ABE2AB /* colonistsTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = colonistsTests.h; sourceTree = "<group>"; };
 		753A582B16BDAC6C00ABE2AB /* colonistsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = colonistsTests.m; sourceTree = "<group>"; };
+		753A583516BDACB800ABE2AB /* GCTurnBasedMatchHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCTurnBasedMatchHelper.h; sourceTree = "<group>"; };
+		753A583616BDACB800ABE2AB /* GCTurnBasedMatchHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCTurnBasedMatchHelper.m; sourceTree = "<group>"; };
+		753A583816BDADB600ABE2AB /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				753A583916BDADB600ABE2AB /* GameKit.framework in Frameworks */,
 				753A57FB16BDAC6C00ABE2AB /* UIKit.framework in Frameworks */,
 				753A57FD16BDAC6C00ABE2AB /* Foundation.framework in Frameworks */,
 				753A57FF16BDAC6C00ABE2AB /* CoreGraphics.framework in Frameworks */,
@@ -106,6 +112,7 @@
 		753A57F916BDAC6C00ABE2AB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				753A583816BDADB600ABE2AB /* GameKit.framework */,
 				753A57FA16BDAC6C00ABE2AB /* UIKit.framework */,
 				753A57FC16BDAC6C00ABE2AB /* Foundation.framework */,
 				753A57FE16BDAC6C00ABE2AB /* CoreGraphics.framework */,
@@ -123,6 +130,8 @@
 				753A581516BDAC6C00ABE2AB /* ViewController.h */,
 				753A581616BDAC6C00ABE2AB /* ViewController.m */,
 				753A580116BDAC6C00ABE2AB /* Supporting Files */,
+				753A583516BDACB800ABE2AB /* GCTurnBasedMatchHelper.h */,
+				753A583616BDACB800ABE2AB /* GCTurnBasedMatchHelper.m */,
 			);
 			path = colonists;
 			sourceTree = "<group>";
@@ -273,6 +282,7 @@
 				753A580716BDAC6C00ABE2AB /* main.m in Sources */,
 				753A580B16BDAC6C00ABE2AB /* AppDelegate.m in Sources */,
 				753A581716BDAC6C00ABE2AB /* ViewController.m in Sources */,
+				753A583716BDACB800ABE2AB /* GCTurnBasedMatchHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,7 +357,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -371,7 +381,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -385,6 +395,7 @@
 				GCC_PREFIX_HEADER = "colonists/colonists-Prefix.pch";
 				INFOPLIST_FILE = "colonists/colonists-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -396,6 +407,7 @@
 				GCC_PREFIX_HEADER = "colonists/colonists-Prefix.pch";
 				INFOPLIST_FILE = "colonists/colonists-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -453,6 +465,7 @@
 				753A583116BDAC6C00ABE2AB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		753A583216BDAC6C00ABE2AB /* Build configuration list for PBXNativeTarget "colonistsTests" */ = {
 			isa = XCConfigurationList;
@@ -461,6 +474,7 @@
 				753A583416BDAC6C00ABE2AB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

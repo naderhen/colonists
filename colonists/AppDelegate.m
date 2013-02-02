@@ -7,12 +7,14 @@
 //
 
 #import "AppDelegate.h"
+#import "GCTurnBasedMatchHelper.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [[GCTurnBasedMatchHelper sharedInstance] authenticateLocalUser];
     return YES;
 }
 							

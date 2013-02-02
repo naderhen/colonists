@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GCTurnBasedMatchHelper.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <UITextFieldDelegate, GKTurnBasedEventHandlerDelegate> {
+    IBOutlet UITextView *mainTextController;
+    IBOutlet UITextField *textInputField;
+    
+}
 
+- (IBAction)presentGCTurnViewController:(id)sender;
+- (IBAction)sendTurn:(id)sender;
 @end
