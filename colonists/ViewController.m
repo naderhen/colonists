@@ -129,4 +129,9 @@
     mainTextController.text = storySoFar;
 }
 
+-(void)sendNotice:(NSString *)notice forMatch:(GKTurnBasedMatch *)match {
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Another game needs your attention!" message:notice delegate:self cancelButtonTitle:@"Sweet!" otherButtonTitles:nil, nil];
+    [av show];
+}
+
 @end

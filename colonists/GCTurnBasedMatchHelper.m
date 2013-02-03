@@ -167,6 +167,24 @@ static GCTurnBasedMatchHelper *sharedHelper = nil;
 
 -(void)handleTurnEventForMatch:(GKTurnBasedMatch *)match didBecomeActive:(BOOL)didBecomeActive {
     NSLog(@"Turn has Happened");
+    if ([match.matchID isEqualToString:currentMatch.matchID]) {
+        if ([match.currentParticipant.playerID isEqualToString:[GKLocalPlayer localPlayer].playerID]) {
+            // its the current match and its our turn now
+            self.currentMatch = match;
+            [delegate takeTurn:match];
+        } else {
+            // its the current match but not our turn
+            self.currentMatch = match;
+            [delegate layoutMatch:match];
+        }
+    } else {
+        if ([match.currentParticipant.playerID isEqualToString:[GKLocalPlayer localPlayer].playerID]) {
+            // its not the current match and its our turn now
+            [delegate sendNotice:@"It's Your turn in another match!" forMatch:match];
+        } else {
+            //its not the current match and its someone else's turn
+        }
+    }
 }
 
 -(void)handleMatchEnded:(GKTurnBasedMatch *)match {
