@@ -113,11 +113,19 @@ static GCTurnBasedMatchHelper *sharedHelper = nil;
     [presentingViewController dismissViewControllerAnimated:YES completion:nil];
     self.currentMatch = match;
     GKTurnBasedParticipant *firstParticipant = [match.participants objectAtIndex:0];
-    if (firstParticipant.lastTurnDate) {
-        NSLog(@"-------NUMBER OF PARTICIPANTS: %lu", (unsigned long)match.participants.count);
-        [delegate takeTurn:match];
-    } else {
+    
+    if (firstParticipant.lastTurnDate == NULL) {
+        // It's a new Game!
         [delegate enterNewGame:match];
+    } else {
+        BOOL isMyTurn = [match.currentParticipant.playerID isEqualToString:[GKLocalPlayer localPlayer].playerID];
+        if (isMyTurn) {
+            // It's Your Turn!
+            [delegate takeTurn:match];
+        } else {
+            // It's not your turn, just display game state
+            [delegate layoutMatch:match];
+        }
     }
 }
 

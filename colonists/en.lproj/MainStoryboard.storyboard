@@ -35,27 +35,39 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q06-rV-LMb">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="269" id="rr5-PB-VJt"/>
+                                    <constraint firstAttribute="height" constant="224" id="Fqn-4h-y2v"/>
                                 </constraints>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="Dcc-D5-DBu">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="Z4M-nn-hNb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="i6P-ku-YYc" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="45m-G5-pLh"/>
                             <constraint firstAttribute="trailing" secondItem="m2S-l7-qFf" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="4bJ-0Z-lA8"/>
-                            <constraint firstItem="q06-rV-LMb" firstAttribute="top" secondItem="m2S-l7-qFf" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="60b-Ja-Mhg"/>
                             <constraint firstItem="q06-rV-LMb" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="85c-pQ-Vn9"/>
                             <constraint firstItem="i6P-ku-YYc" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="9v4-Vb-4Vc"/>
-                            <constraint firstItem="m2S-l7-qFf" firstAttribute="top" secondItem="3" secondAttribute="top" constant="20" symbolic="YES" type="default" id="Dqg-u2-lbE"/>
+                            <constraint firstItem="Dcc-D5-DBu" firstAttribute="top" secondItem="3" secondAttribute="top" constant="20" symbolic="YES" type="default" id="VAv-Ya-qs5"/>
                             <constraint firstItem="m2S-l7-qFf" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="f1f-UF-rRM"/>
                             <constraint firstAttribute="trailing" secondItem="q06-rV-LMb" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="gEs-UD-Tqf"/>
+                            <constraint firstItem="m2S-l7-qFf" firstAttribute="top" secondItem="3" secondAttribute="top" constant="115" id="jkt-rP-fWF"/>
+                            <constraint firstItem="Dcc-D5-DBu" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="rKS-KL-TIZ"/>
+                            <constraint firstItem="q06-rV-LMb" firstAttribute="top" secondItem="m2S-l7-qFf" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="tsT-kL-uy7"/>
+                            <constraint firstAttribute="trailing" secondItem="Dcc-D5-DBu" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="yjr-G4-vIX"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="mainTextController" destination="q06-rV-LMb" id="1Cr-uA-5nP"/>
+                        <outlet property="statusLabel" destination="Dcc-D5-DBu" id="kcP-e1-Pda"/>
                         <outlet property="textInputField" destination="m2S-l7-qFf" id="ylW-OG-KbW"/>
                     </connections>
                 </viewController>
@@ -72,7 +84,9 @@
             <relationships>
                 <relationship kind="action" name="presentGCTurnViewController:"/>
                 <relationship kind="action" name="sendTurn:"/>
+                <relationship kind="outlet" name="inputView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="mainTextController" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="statusLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="textInputField" candidateClass="UITextField"/>
             </relationships>
         </class>

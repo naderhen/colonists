@@ -13,7 +13,7 @@
     IBOutlet UITextView *mainTextController;
     IBOutlet UITextField *textInputField;
     IBOutlet UIView *inputView;
-    
+    IBOutlet UILabel *statusLabel;
 }
 
 - (IBAction)presentGCTurnViewController:(id)sender;

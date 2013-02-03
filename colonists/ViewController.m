@@ -24,6 +24,8 @@
 	// Do any additional setup after loading the view, typically from a nib.
     textInputField.delegate = self;
     [GCTurnBasedMatchHelper sharedInstance].delegate = self;
+    textInputField.enabled= NO;
+    statusLabel.text = @"Welcome. Press Game Center to get started";
 }
 
 - (void)didReceiveMemoryWarning
@@ -71,6 +73,8 @@
 
 -(void)enterNewGame:(GKTurnBasedMatch *)match {
     NSLog(@"Entering New Game...");
+    statusLabel.text = @"Player 1's Turn (That's You!)";
+    textInputField.enabled = YES;
     Deck *deck = [[Deck alloc] init];
     [deck shuffle];
     [GCTurnBasedMatchHelper sharedInstance].deck = deck;
@@ -82,10 +86,30 @@
 
 -(void)takeTurn:(GKTurnBasedMatch *)match {
     NSLog(@"Taking turn for existing game...");
+    int playerNum = [match.participants indexOfObject:match.currentParticipant] + 1;
+    NSString *statusString = [NSString stringWithFormat:@"Player %d's Turn (That's You)", playerNum];
+    statusLabel.text = statusString;
+    textInputField.enabled = YES;
     if ([match.matchData bytes]) {
         NSString *storySoFar = [NSString stringWithUTF8String:[match.matchData bytes]];
         mainTextController.text = storySoFar;
     }
+}
+
+-(void)layoutMatch:(GKTurnBasedMatch *)match {
+    NSLog(@"Viewing match where it's not our turn");
+    NSString *statusString;
+    
+    if (match.status == GKTurnBasedMatchStatusEnded) {
+        statusString = @"Match Ended";
+    } else {
+        int playerNum = [match.participants indexOfObject:match.currentParticipant] + 1;
+        statusString = [NSString stringWithFormat:@"Player %d's Turn", playerNum];
+    }
+    statusLabel.text = statusString;
+    textInputField.enabled = NO;
+    NSString *storySoFar = [NSString stringWithUTF8String:[match.matchData bytes]];
+    mainTextController.text = storySoFar;
 }
 
 @end
