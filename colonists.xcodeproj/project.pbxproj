@@ -25,6 +25,8 @@
 		753A582C16BDAC6C00ABE2AB /* colonistsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 753A582B16BDAC6C00ABE2AB /* colonistsTests.m */; };
 		753A583716BDACB800ABE2AB /* GCTurnBasedMatchHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 753A583616BDACB800ABE2AB /* GCTurnBasedMatchHelper.m */; };
 		753A583916BDADB600ABE2AB /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 753A583816BDADB600ABE2AB /* GameKit.framework */; };
+		75FA424216BECE8C00F287BE /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = 75FA424116BECE8C00F287BE /* Tile.m */; };
+		75FA424516BECF9E00F287BE /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = 75FA424416BECF9E00F287BE /* Deck.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,10 @@
 		753A583516BDACB800ABE2AB /* GCTurnBasedMatchHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCTurnBasedMatchHelper.h; sourceTree = "<group>"; };
 		753A583616BDACB800ABE2AB /* GCTurnBasedMatchHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCTurnBasedMatchHelper.m; sourceTree = "<group>"; };
 		753A583816BDADB600ABE2AB /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		75FA424016BECE8C00F287BE /* Tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tile.h; sourceTree = "<group>"; };
+		75FA424116BECE8C00F287BE /* Tile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tile.m; sourceTree = "<group>"; };
+		75FA424316BECF9E00F287BE /* Deck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Deck.h; sourceTree = "<group>"; };
+		75FA424416BECF9E00F287BE /* Deck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Deck.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +138,10 @@
 				753A580116BDAC6C00ABE2AB /* Supporting Files */,
 				753A583516BDACB800ABE2AB /* GCTurnBasedMatchHelper.h */,
 				753A583616BDACB800ABE2AB /* GCTurnBasedMatchHelper.m */,
+				75FA424016BECE8C00F287BE /* Tile.h */,
+				75FA424116BECE8C00F287BE /* Tile.m */,
+				75FA424316BECF9E00F287BE /* Deck.h */,
+				75FA424416BECF9E00F287BE /* Deck.m */,
 			);
 			path = colonists;
 			sourceTree = "<group>";
@@ -283,6 +293,8 @@
 				753A580B16BDAC6C00ABE2AB /* AppDelegate.m in Sources */,
 				753A581716BDAC6C00ABE2AB /* ViewController.m in Sources */,
 				753A583716BDACB800ABE2AB /* GCTurnBasedMatchHelper.m in Sources */,
+				75FA424216BECE8C00F287BE /* Tile.m in Sources */,
+				75FA424516BECF9E00F287BE /* Deck.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

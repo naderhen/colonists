@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "Deck.h"
 
 @interface ViewController ()
 
@@ -70,6 +71,9 @@
 
 -(void)enterNewGame:(GKTurnBasedMatch *)match {
     NSLog(@"Entering New Game...");
+    Deck *deck = [[Deck alloc] init];
+    [deck shuffle];
+    
     mainTextController.text = @"Once upon a time...";
 }
 
