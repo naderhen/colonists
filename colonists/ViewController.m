@@ -59,14 +59,31 @@
     
     NSUInteger currentIndex = [currentMatch.participants indexOfObject:currentMatch.currentParticipant];
     GKTurnBasedParticipant *nextParticipant;
-    nextParticipant = [currentMatch.participants objectAtIndex:((currentIndex + 1) % [currentMatch.participants count])];
-    [currentMatch endTurnWithNextParticipant:nextParticipant matchData:data completionHandler:^(NSError *error) {
+    
+    NSUInteger nextIndex = (currentIndex + 1) % [currentMatch.participants count];
+    nextParticipant = [currentMatch.participants objectAtIndex:nextIndex];
+    
+    for (int i = 0; i < [currentMatch.participants count]; i++) {
+        nextParticipant = [currentMatch.participants objectAtIndex:((currentIndex + 1 + i) % [currentMatch.participants count])];
+        if (nextParticipant.matchOutcome != GKTurnBasedMatchOutcomeQuit) {
+            break;
+        }
+    }
+    
+    [currentMatch endTurnWithNextParticipants:[[NSArray alloc] initWithObjects:nextParticipant, nil] turnTimeout:GKTurnTimeoutDefault matchData:data completionHandler:^(NSError *error) {
         if (error) {
             NSLog(@"%@", error);
+            statusLabel.text = @"Oops, there was a problem. Try that again.";
+        } else {
+            statusLabel.text = @"Your turn is over.";
+            textInputField.enabled = NO;
         }
     }];
+    
+
     NSLog(@"Send Turn, %@, %@", data, nextParticipant);
     textInputField.text = @"";
+    
 }
 
 #pragma mark - GCTurnBasedMatchHelperDelegate
