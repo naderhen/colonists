@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <GameKit/GameKit.h>
+#import "Deck.h"
 
 @protocol GCTurnBasedMatchHelperDelegate
 
@@ -31,6 +32,7 @@
 @property (nonatomic, retain) id <GCTurnBasedMatchHelperDelegate> delegate;
 @property (assign, readonly) BOOL gameCenterAvailable;
 @property (retain) GKTurnBasedMatch *currentMatch;
+@property (retain) Deck *deck;
 
 + (GCTurnBasedMatchHelper *)sharedInstance;
 - (void)authenticateLocalUser;

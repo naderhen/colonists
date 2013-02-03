@@ -8,6 +8,7 @@
 
 #import "GCTurnBasedMatchHelper.h"
 #import "GameKit/GameKit.h"
+#import "Deck.h"
 
 @implementation GCTurnBasedMatchHelper
 
@@ -73,7 +74,18 @@ static GCTurnBasedMatchHelper *sharedHelper = nil;
     NSLog(@"Authenticating local user...");
     if ([GKLocalPlayer localPlayer].authenticated == NO) {
         [[GKLocalPlayer localPlayer]
-         authenticateWithCompletionHandler:nil];
+         authenticateWithCompletionHandler:^(NSError *error) {
+             [GKTurnBasedMatch loadMatchesWithCompletionHandler:^(NSArray *matches, NSError *error) {
+//                 for (GKTurnBasedMatch *match in matches) {
+//                     [match participantQuitOutOfTurnWithOutcome:GKTurnBasedMatchOutcomeTied withCompletionHandler:^(NSError *error) {
+//                         NSLog(@"%@", error);
+//                         [match removeWithCompletionHandler:^(NSError *error) {
+//                             NSLog(@"%@", error);
+//                         }];
+//                     }];
+//                 }
+             }];
+         }];
     } else {
         NSLog(@"Already authenticated!");
     }
@@ -102,6 +114,7 @@ static GCTurnBasedMatchHelper *sharedHelper = nil;
     self.currentMatch = match;
     GKTurnBasedParticipant *firstParticipant = [match.participants objectAtIndex:0];
     if (firstParticipant.lastTurnDate) {
+        NSLog(@"-------NUMBER OF PARTICIPANTS: %lu", (unsigned long)match.participants.count);
         [delegate takeTurn:match];
     } else {
         [delegate enterNewGame:match];

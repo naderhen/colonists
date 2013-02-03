@@ -1,5 +1,5 @@
 //
-//  Deck.h
+//  Stack.h
 //  colonists
 //
 //  Created by Nader Hendawi on 2/3/13.
@@ -7,14 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+
 @class Tile;
 
-@interface Deck : NSObject
+@interface Stack : NSObject
 
-- (void)shuffle;
-- (void)setUpTiles;
-- (Tile *)draw;
-- (NSArray *)tiles;
-- (int)tilesRemaining;
+- (void)addTileToTop:(Tile *)tile;
+- (NSUInteger)tileCount;
+- (NSArray *)array;
 
 @end

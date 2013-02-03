@@ -17,16 +17,27 @@
 
 - (id)init {
     if ((self = [super init])) {
-        _tiles = [NSMutableArray arrayWithCapacity:50];
+        _tiles = [NSMutableArray arrayWithCapacity:20];
+        
+        
+        NSMutableArray *numberArray = [[NSMutableArray alloc] initWithObjects:@"2",@"3", @"3", @"4", @"4", @"5", @"5", @"6", @"6", @"7", @"8", @"8", @"9", @"9", @"10", @"10", @"11", @"11", @"12", @"13", nil];
+        
+        
         for (Resource resource = ResourceBrick; resource <= ResourceOre; ++resource) {
-            for (int value = 1; value <= 12; ++value) {
-                Tile *tile = [[Tile alloc] initWithResource:resource value:value];
+            for (int rcount = 0; rcount <= 3; ++rcount) {
+                int i = arc4random() % [numberArray count];
+                NSString *newValue = [numberArray objectAtIndex:i];
+                Tile *tile = [[Tile alloc] initWithResource:resource value:[newValue intValue]];
                 [_tiles addObject:tile];
-//                NSLog(@"%@: %@", tile.resource, tile.value);
+                [numberArray removeObjectAtIndex:i];
             }
         }
     }
     return self;
+}
+
+-(NSArray *)tiles {
+    return _tiles;
 }
 
 - (int)tilesRemaining {

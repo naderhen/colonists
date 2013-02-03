@@ -27,6 +27,7 @@
 		753A583916BDADB600ABE2AB /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 753A583816BDADB600ABE2AB /* GameKit.framework */; };
 		75FA424216BECE8C00F287BE /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = 75FA424116BECE8C00F287BE /* Tile.m */; };
 		75FA424516BECF9E00F287BE /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = 75FA424416BECF9E00F287BE /* Deck.m */; };
+		75FA424816BED57500F287BE /* Stack.m in Sources */ = {isa = PBXBuildFile; fileRef = 75FA424716BED57500F287BE /* Stack.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,8 @@
 		75FA424116BECE8C00F287BE /* Tile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tile.m; sourceTree = "<group>"; };
 		75FA424316BECF9E00F287BE /* Deck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Deck.h; sourceTree = "<group>"; };
 		75FA424416BECF9E00F287BE /* Deck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Deck.m; sourceTree = "<group>"; };
+		75FA424616BED57500F287BE /* Stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stack.h; sourceTree = "<group>"; };
+		75FA424716BED57500F287BE /* Stack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stack.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +145,8 @@
 				75FA424116BECE8C00F287BE /* Tile.m */,
 				75FA424316BECF9E00F287BE /* Deck.h */,
 				75FA424416BECF9E00F287BE /* Deck.m */,
+				75FA424616BED57500F287BE /* Stack.h */,
+				75FA424716BED57500F287BE /* Stack.m */,
 			);
 			path = colonists;
 			sourceTree = "<group>";
@@ -295,6 +300,7 @@
 				753A583716BDACB800ABE2AB /* GCTurnBasedMatchHelper.m in Sources */,
 				75FA424216BECE8C00F287BE /* Tile.m in Sources */,
 				75FA424516BECF9E00F287BE /* Deck.m in Sources */,
+				75FA424816BED57500F287BE /* Stack.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

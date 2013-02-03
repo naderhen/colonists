@@ -12,6 +12,7 @@ typedef enum {
     ResourceBrick,
     ResourceWool,
     ResourceWheat,
+    ResourceWood,
     ResourceOre
 } Resource;
 

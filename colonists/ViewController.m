@@ -73,8 +73,11 @@
     NSLog(@"Entering New Game...");
     Deck *deck = [[Deck alloc] init];
     [deck shuffle];
+    [GCTurnBasedMatchHelper sharedInstance].deck = deck;
     
-    mainTextController.text = @"Once upon a time...";
+    NSString *tileString = [NSString stringWithFormat:@"%@", deck.tiles];
+    
+    mainTextController.text = tileString;
 }
 
 -(void)takeTurn:(GKTurnBasedMatch *)match {
