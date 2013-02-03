@@ -71,11 +71,17 @@ static GCTurnBasedMatchHelper *sharedHelper = nil;
     
     if (!gameCenterAvailable) return;
     
+    void (^setGKEventHandlerDelegate)(NSError *) = ^(NSError *error) {
+        GKTurnBasedEventHandler *ev = [GKTurnBasedEventHandler sharedTurnBasedEventHandler];
+        ev.delegate = self;
+    };
+    
     NSLog(@"Authenticating local user...");
     if ([GKLocalPlayer localPlayer].authenticated == NO) {
         [[GKLocalPlayer localPlayer]
          authenticateWithCompletionHandler:^(NSError *error) {
-             [GKTurnBasedMatch loadMatchesWithCompletionHandler:^(NSArray *matches, NSError *error) {
+             setGKEventHandlerDelegate(error);
+//             [GKTurnBasedMatch loadMatchesWithCompletionHandler:^(NSArray *matches, NSError *error) {
 //                 for (GKTurnBasedMatch *match in matches) {
 //                     [match participantQuitOutOfTurnWithOutcome:GKTurnBasedMatchOutcomeTied withCompletionHandler:^(NSError *error) {
 //                         NSLog(@"%@", error);
@@ -84,10 +90,11 @@ static GCTurnBasedMatchHelper *sharedHelper = nil;
 //                         }];
 //                     }];
 //                 }
-             }];
+//             }];
          }];
     } else {
         NSLog(@"Already authenticated!");
+        setGKEventHandlerDelegate(nil);
     }
 }
 
@@ -154,6 +161,29 @@ static GCTurnBasedMatchHelper *sharedHelper = nil;
     NSLog(@"playerquitforMatch, %@, %@",match, match.currentParticipant);
     
     [match participantQuitInTurnWithOutcome:GKTurnBasedMatchOutcomeQuit nextParticipants:[[NSArray alloc] initWithObjects:part, nil] turnTimeout:GKTurnTimeoutDefault matchData:match.matchData completionHandler:nil];
+}
+
+#pragma mark GKTurnBasedEventHanderDelegate
+
+-(void)handleTurnEventForMatch:(GKTurnBasedMatch *)match didBecomeActive:(BOOL)didBecomeActive {
+    NSLog(@"Turn has Happened");
+}
+
+-(void)handleMatchEnded:(GKTurnBasedMatch *)match {
+    NSLog(@"Game Has Ended");
+}
+
+-(void)handleInviteFromGameCenter:(NSArray *)playersToInvite {
+    [presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    GKMatchRequest *request = [[GKMatchRequest alloc] init];
+    request.playersToInvite = playersToInvite;
+    request.maxPlayers = 2;
+    request.minPlayers = 2;
+    
+    GKTurnBasedMatchmakerViewController *viewController = [[GKTurnBasedMatchmakerViewController alloc] initWithMatchRequest:request];
+    viewController.showExistingMatches = NO;
+    viewController.turnBasedMatchmakerDelegate = self;
+    [presentingViewController presentViewController:viewController animated:YES completion:nil];
 }
 
 @end
